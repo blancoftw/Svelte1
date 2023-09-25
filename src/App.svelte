@@ -1,6 +1,5 @@
 <script>
 	let numbers = []
-
   let src = 'https://upload.wikimedia.org/wikipedia/ru/thumb/6/61/Rickrolling.gif/200px-Rickrolling.gif';
 	let name = 'Rick Astley';
   let CC = false;
@@ -10,7 +9,6 @@
 		numbers = [...numbers, numbers.length + 1];
     CC = true;
 	}
-	$: sum = numbers.reduce((total, currentNumber) => total + currentNumber, 0);
   $: bord = numbers.length
 
 	function UnCount (idx){
@@ -40,7 +38,10 @@
 
 
 <style>
-p{background-color: aqua;}
+/* p{background-color: aqua;} */
+
+.odd{background-color: aqua;}
+.even{background-color: yellow;}
 
 .brd {border: 1px solid green;}
 
