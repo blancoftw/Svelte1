@@ -1,10 +1,17 @@
 <script>
 	let numbers = []
 
+  let src = 'https://upload.wikimedia.org/wikipedia/ru/thumb/6/61/Rickrolling.gif/200px-Rickrolling.gif';
+	let name = 'Rick Astley';
+  let CC = false;
+
+
 	function count (){
 		numbers = [...numbers, numbers.length + 1];
+    CC = true;
 	}
 	$: sum = numbers.reduce((total, currentNumber) => total + currentNumber, 0);
+  $: bord = numbers.length
 
 	function UnCount (idx){
 		// numbers = [...numbers, numbers.delete + 1];
@@ -12,21 +19,31 @@
 	}
 </script>
 
-<!-- <p>{numbers.join('  ')} </p> -->
 
 <button on:click={count}>
 	Add a number
 </button>
 
-{#each numbers as num, i}
-	 <!-- svelte-ignore a11y-click-events-have-key-events -->
-	 <p on:click= {() => UnCount(i)}>
-		{num}
-	 </p>
-{/each}
+<div style = {`border:${bord}px solid green `}>
+  {#each numbers as num, i}
+ 	 <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <p on:click= {() => UnCount(i)}>
+      {num}
+     </p>
+     {:else}
+     {#if CC == true}
+     <img {src} alt="{name} dances." />     
+     {/if}
+
+  {/each}
+</div>
+
 
 <style>
 p{background-color: aqua;}
+
+.brd {border: 1px solid green;}
+
 
 button {
   border-radius: 6px;
